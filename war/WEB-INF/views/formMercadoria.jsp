@@ -1,6 +1,7 @@
 <%-- 
      Fragmento com o formulario de preenchimento com os dados da mercadoria.
      Utilizado pela pagina de inclusao e edicao de mercadoria.
+     O formulario de mercadorias utiliza o plugin Validation do JQuery, para validar os inputs.
 --%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -71,11 +72,15 @@ $(document).ready(function () {
  		 	rules: {
  	 		 	nome: { required: true, minlength: 5 },
  	 		 	quantidade: { required: true, number: true },
-				preco: { required: true, number: true }
+				preco: { required: true, moeda: true }
  		 	}
  	});
- 	$("#salvar").click(function () {
-   		$("#frmMercadoria").submit();
-    });
+ 	
+ 	$("#salvar").click(function () { $("#frmMercadoria").submit(); });
+
+    $.validator.addMethod("moeda",
+    	function(value, element) {
+    		return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:.\d{3})+)?(?:\,\d+)?$/.test(value);
+    	}, 'Valor invalido para moeda');
 });
 </script>

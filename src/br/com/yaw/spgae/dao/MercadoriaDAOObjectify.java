@@ -20,6 +20,9 @@ import br.com.yaw.spgae.model.Mercadoria;
  *   A proposta do Objetify é denifir uma API mais alto-nível para manipular dados no <code>DataStore</code> do App Engine.
  * </p>
  * 
+ * <p><code>MercadoriaDAOObjectify</code> é anotado com <code>@Repository</code>, dessa forma o Spring Framework 
+ * gerencia o ciclo de vida dos objetos dessa classe, além de permitir a injeção de dependência em outros componentes. 
+ * 
  * @see br.com.yaw.sjpac.dao.MercadoriaDAO
  * @see com.googlecode.objectify.ObjectifyService.
  * 

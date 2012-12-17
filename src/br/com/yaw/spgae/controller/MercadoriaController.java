@@ -1,13 +1,21 @@
 package br.com.yaw.spgae.controller;
 
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Locale;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,6 +46,9 @@ public class MercadoriaController {
 	 */
 	@Autowired
 	private MercadoriaDAO dao;
+	
+	@Autowired @Qualifier("sobreApp") 
+	private ArrayList<?> sobre;
 
 	/**
 	 * Ponto de entrada da aplicação ("/").
@@ -144,6 +155,13 @@ public class MercadoriaController {
 		getDataSource().synch(dao.getAll());
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "sobre", method = RequestMethod.GET)
+	public String sobre(Model uiModel) {
+		uiModel.addAttribute("sobre",sobre);
+		uiModel.addAttribute("active", "sobre");
+		return "sobre";
+	}
     
 	/**
 	 * O <code>DataSource</code> de mercadorias é armazenado na sessão do usuário.
@@ -160,6 +178,16 @@ public class MercadoriaController {
 			session.setAttribute("ds", ds);
 		}
 		return ds;
+	}
+	
+	/**
+	 * Configura um conversor para double em pt-BR, usado no campo de preço.
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Double.class, 
+				new CustomNumberEditor(Double.class, NumberFormat.getInstance(new Locale("pt","BR")), true));
 	}
 
 }

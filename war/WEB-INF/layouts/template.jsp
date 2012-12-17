@@ -20,12 +20,11 @@
 		<script type="text/javascript" src="${jquery_url}"></script>
 		<script type="text/javascript" src="${jquery_validate_url}"></script>
 		
-		<spring:message code="app.title" var="app_title" htmlEscape="false" />
-		<title>${app_title}</title>
+		<spring:message code="page.title.app" var="page_title_app" htmlEscape="false" />
+		<title>${page_title_app}</title>
 	</head>
 
   	<body>
-  		<fmt:setLocale value="pt-BR" scope="session"/>
   		<div class="header">
     		<div class="container">
     			<tiles:insertAttribute name="header" ignore="true" />

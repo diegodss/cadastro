@@ -4,7 +4,7 @@
   <version>1</version>
 
   <!--
-    Allows App Engine to send multiple requests to one instance in parallel:
+    Multiplas requisicoes para a mesma instancia
   -->
   <threadsafe>true</threadsafe>
   
@@ -12,9 +12,9 @@
   
   <async-session-persistence enabled="false" />
 
-  <!-- Configure java.util.logging -->
+  <!-- Configura log4j -->
   <system-properties>
-    <property name="java.util.logging.config.file" value="WEB-INF/classes/log4j.properties"/>
+      <property name="java.util.logging.config.file" value="WEB-INF/classes/log4j.properties"/>
   </system-properties>
 
 </appengine-web-app>

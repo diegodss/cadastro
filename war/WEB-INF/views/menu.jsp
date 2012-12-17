@@ -17,7 +17,7 @@
         </li>
 		<li class="divider"></li>
 		<li class="${active == 'sobre' ? 'active' : ''}">
-			<a href="">${menu_sobre}</a>
+			<a href="/sobre">${menu_sobre}</a>
 		</li>
 	</ul>
 </div>

@@ -5,11 +5,11 @@
 
 <tiles-definitions>
 	<!--
-	    Arquivo define os templates da aplicacao, so definimos o default. 
+	    Arquivo define o template da aplicacao, no nosso caso o template default. 
 	    Os atributos sao trechos definidos no template para substituicao, 
 	    em nosso caso o proprio template define o valor.
 	-->
-	<definition name="default" template="/WEB-INF/layouts/default.jsp">
+	<definition name="default" template="/WEB-INF/layouts/template.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
