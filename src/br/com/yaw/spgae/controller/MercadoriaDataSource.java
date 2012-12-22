@@ -28,8 +28,6 @@ import br.com.yaw.spgae.model.Mercadoria;
  */
 public class MercadoriaDataSource implements Serializable, DataSource<Mercadoria> {
 	
-	private static final long serialVersionUID = -2173457066370625536L;
-
 	private static Logger log = Logger.getLogger(MercadoriaDataSource.class);
 	
 	private Map<Long, Mercadoria> data = new LinkedHashMap<Long, Mercadoria>();
