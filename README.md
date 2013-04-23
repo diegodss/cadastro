@@ -7,6 +7,8 @@ O foco desse projeto é o estudo da tecnologia Spring MVC para o desenvolvimento
 
 Estudantes/profissionais interessados em adquirir conhecimento em uma das principais tecnologias do mercado web (Spring MVC) com a opção de implantar a solução na nuvem.
 
+Você pode acessar a aplicação no Google App Engine através da url: http://yawdemo-spring-mvc.appspot.com/
+
 Detalhes da implementação
 -------
 Tecnologias utilizadas na implementação:
