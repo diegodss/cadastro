@@ -6,18 +6,6 @@
     	Arquivo que define no tiles quais sao as paginas, e quais templates cada uma utiliza.
     	Repare que em nossa aplicacao, o unico atributo sobreescrito pelas paginas eh o body.
     -->
-    
-	<definition extends="default" name="lista">
-		<put-attribute name="body" value="/WEB-INF/views/listaMercadorias.jsp" />
-	</definition>
-	
-	<definition extends="default" name="incluir">
-		<put-attribute name="body" value="/WEB-INF/views/incluirMercadoria.jsp" />
-	</definition>
-	
-	<definition extends="default" name="editar">
-		<put-attribute name="body" value="/WEB-INF/views/editarMercadoria.jsp" />
-	</definition>
 	
 	<definition extends="default" name="errorPage">
 		<put-attribute name="body" value="/WEB-INF/views/errorPage.jsp" />
@@ -27,4 +15,30 @@
 		<put-attribute name="body" value="/WEB-INF/views/sobre.jsp" />
 	</definition>
 
-</tiles-definitions>
+	<!-- custom menu -->
+	<definition extends="default" name="cadastroLista">
+		<put-attribute name="body" value="/WEB-INF/views/cadastroLista.jsp" />
+	</definition>
+	
+	<definition extends="default" name="cadastroIncluir">
+		<put-attribute name="body" value="/WEB-INF/views/cadastroIncluir.jsp" />
+	</definition>
+	
+	<definition extends="default" name="cadastroEditar">
+		<put-attribute name="body" value="/WEB-INF/views/cadastroEditar.jsp" />
+	</definition>
+	<!-- fim de custom menu -->	
+
+	<!-- custom menu -->
+	<definition extends="default" name="clienteLista">
+		<put-attribute name="body" value="/WEB-INF/views/clienteLista.jsp" />
+	</definition>
+	
+	<definition extends="default" name="clienteIncluir">
+		<put-attribute name="body" value="/WEB-INF/views/clienteIncluir.jsp" />
+	</definition>
+	
+	<definition extends="default" name="clienteEditar">
+		<put-attribute name="body" value="/WEB-INF/views/clienteEditar.jsp" />
+	</definition>
+	<!-- fim de custom menu --></tiles-definitions>
