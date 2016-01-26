@@ -3,7 +3,8 @@ package br.com.yaw.spgae.config;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import br.com.yaw.spgae.model.Mercadoria;
+import br.com.yaw.spgae.model.Cadastro;
+import br.com.yaw.spgae.model.Cliente;
 
 import com.googlecode.objectify.ObjectifyService;
 
@@ -18,7 +19,8 @@ public class ConfigStartup implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		ObjectifyService.register(Mercadoria.class);
+		ObjectifyService.register(Cadastro.class);
+		ObjectifyService.register(Cliente.class);
 	}
 	
 	@Override
