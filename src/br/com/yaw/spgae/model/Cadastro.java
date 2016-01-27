@@ -25,9 +25,10 @@ public class Cadastro  implements Serializable {
 	private String senha;
 	private String servico;
 	private String usuario;
+	private String test;
 
 /*    private Cliente cliente;  
-    
+    teste de sync
     public Cliente getCliente() {  
         return cliente;  
     }  
