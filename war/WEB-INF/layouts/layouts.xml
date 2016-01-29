@@ -14,5 +14,10 @@
 		<put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
 	</definition>
+	
+	<definition name="template_sinmenu" template="/WEB-INF/layouts/template_sinmenu.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+	</definition>
 
 </tiles-definitions>

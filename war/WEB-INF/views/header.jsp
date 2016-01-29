@@ -2,8 +2,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div>
 	<spring:url var="banner" value="/resources/img/logotipo_bitmaker.png" />
+	
 	<div class="logo">
-		<img src="${banner}" />
+		<img src="${banner}" style="padding-top: 15px;" />
 	</div>
 	
 	<spring:message code="app.title" var="app_title" htmlEscape="false" />

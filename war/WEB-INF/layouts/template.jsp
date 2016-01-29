@@ -26,19 +26,19 @@
 
   	<body>
   		<div class="header">
-    		<div class="container">
+    		<div class="container-fluid">
     			<tiles:insertAttribute name="header" ignore="true" />
+    			<div class="">
+    				<tiles:insertAttribute name="menu" ignore="true" />
+    			</div>
     		</div>
     	</div>
   		
-  		<div class="container">
+  		<div class="container-fluid">
 	   		<div id="wrapper" class="row-fluid show-grid">
-			    <div class="sidebar">
-			    	<div class="well span2">
-			    		<tiles:insertAttribute name="menu" ignore="true" />
-			    	</div>
-			    </div>
-			    <div class="span8">
+			    <!--   div class="sidebar">
+			    </div -->
+			    <div class="span12">
 		    		<tiles:insertAttribute name="body"/>
 		    		
 		    		<footer>

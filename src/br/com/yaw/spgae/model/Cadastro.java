@@ -71,7 +71,7 @@ public class Cadastro  implements Serializable {
 	public void setURL(String URL){
 		this.URL = URL;
 	}
-	public String getImagem(){
+	public String getImagem(){		
 		return imagem;
 	}
 	public void setImagem(String imagem){

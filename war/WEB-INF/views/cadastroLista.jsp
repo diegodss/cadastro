@@ -13,7 +13,9 @@
 	<spring:message code="label.cadastro.senha" var="label_cadastro_senha" htmlEscape="false" />
 	<spring:message code="label.editar" var="label_editar" htmlEscape="false" />
 	<spring:message code="button.atualizar" var="button_atualizar" htmlEscape="false" />
-	
+
+	<spring:url var="copiarIco" value="/resources/img/copiar-ico-32.png" />	
+		
 	<div style="border-bottom: 1px solid #E5E5E5;">
 		<h3>${label_cadastros} <small> ${label_listagem}</small></h3>
 	</div>
@@ -35,13 +37,13 @@
 					<spring:param name="form"></spring:param>
 				</spring:url>
 				<a href="${edit_url}" title="${label_editar} ${c.imagem}">
-				<img src="${c.imagem}" />
+				<img src="${c.imagem}" width="24" />
 				</a>
 			</td>
-			<td>${c.servico}</td>
-			<td>${c.URL}</td>
+			<td><a href="${edit_url}" title="${label_editar}">${c.servico}</a></td>
+			<td><a href="${c.URL}" target="_blank">${c.URL}</a></td>
 			<td>${c.usuario}</td>
-			<td>${c.senha}</td>
+			<td><a href="#${c.senha}" id="copypassword"><img src="${copiarIco}" width="24" /></a></td>
 		</tr>
 		</c:forEach>
 	</table>
@@ -53,3 +55,28 @@
 	   	</div>
 	</form:form>
 </div>
+
+
+
+	
+
+
+
+
+<script>
+$(document).ready(function () {
+ 	$("#copypassword").click(function(){
+		var text = $(this).attr('href').replace(/^.*?(#|$)/,'');
+		
+		var $temp = $("<input>");
+		$("body").append($temp);
+		$temp.val(text).select();
+		document.execCommand("copy");
+		$temp.remove();
+		  
+	});
+	
+
+	
+});
+</script>

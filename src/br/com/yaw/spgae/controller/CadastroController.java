@@ -28,7 +28,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import br.com.yaw.spgae.dao.CadastroDAO;
 import br.com.yaw.spgae.model.Cadastro;
 import br.com.yaw.spgae.dao.ClienteDAO;
+import br.com.yaw.spgae.dao.ImportanciaDAO;
 import br.com.yaw.spgae.model.Cliente;
+import br.com.yaw.spgae.model.Importancia;
 
 @RequestMapping(value="/cadastro")
 @Controller
@@ -41,9 +43,22 @@ public class CadastroController {
 	@Autowired
 	private ClienteDAO daocliente ;
 	
+	@Autowired
+	private ImportanciaDAO daoimportancia;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String listar (Model uiModel) {
-		uiModel.addAttribute("cadastros", getDataSource().getAll());
+		
+		List<Cadastro> cadastro = getDataSource().getAll();
+		
+		 for (Cadastro c : cadastro) {
+			 String imagem = c.getImagem();
+			 if (imagem.equals("")) {
+				c.setImagem("/resources/img/icon-interrogacao.png");
+			 }
+		 }
+		
+		uiModel.addAttribute("cadastros",cadastro );
 		return "cadastroLista";
 	}
 	
@@ -52,10 +67,13 @@ public class CadastroController {
 		
 	    
 	    List<Cliente> clientes = daocliente.getAll();
+	    uiModel.addAttribute("clientesList", clientes);
 	    
+	    List<Importancia> importancias = daoimportancia.getAll();
+	    uiModel.addAttribute("importanciaList", importancias);
 	    
 		uiModel.addAttribute("cadastro", new Cadastro());
-		uiModel.addAttribute("clientesList", clientes);
+		
 		
 		
 		uiModel.addAttribute("active", "cadastroIncluir");
@@ -78,8 +96,12 @@ public class CadastroController {
 	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
 	public String editarForm(@PathVariable("id") Long id, Model uiModel) {
 		Cadastro c = dao.findById(id);
+		
 		List<Cliente> clientes = daocliente.getAll();
 		uiModel.addAttribute("clientesList", clientes);
+		
+		List<Importancia> importancias = daoimportancia.getAll();
+		uiModel.addAttribute("importanciaList", importancias);
 		
 		if (c != null) {
 			uiModel.addAttribute("cadastro", c);

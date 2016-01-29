@@ -5,7 +5,7 @@ import javax.servlet.ServletContextListener;
 
 import br.com.yaw.spgae.model.Cadastro;
 import br.com.yaw.spgae.model.Cliente;
-
+import br.com.yaw.spgae.model.Importancia;
 import com.googlecode.objectify.ObjectifyService;
 
 /**
@@ -21,6 +21,7 @@ public class ConfigStartup implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		ObjectifyService.register(Cadastro.class);
 		ObjectifyService.register(Cliente.class);
+		ObjectifyService.register(Importancia.class);
 	}
 	
 	@Override

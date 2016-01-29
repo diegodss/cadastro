@@ -15,6 +15,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/sobre.jsp" />
 	</definition>
 
+	<definition extends="template_sinmenu" name="loginInvalido">
+		<put-attribute name="body" value="/WEB-INF/views/loginInvalido.jsp" />
+	</definition>
+
 	<!-- custom menu -->
 	<definition extends="default" name="cadastroLista">
 		<put-attribute name="body" value="/WEB-INF/views/cadastroLista.jsp" />
@@ -41,4 +45,20 @@
 	<definition extends="default" name="clienteEditar">
 		<put-attribute name="body" value="/WEB-INF/views/clienteEditar.jsp" />
 	</definition>
-	<!-- fim de custom menu --></tiles-definitions>
+	<!-- fim de custom menu -->
+	
+	<!-- custom menu -->
+	<definition extends="default" name="importanciaLista">
+		<put-attribute name="body" value="/WEB-INF/views/importanciaLista.jsp" />
+	</definition>
+	
+	<definition extends="default" name="importanciaIncluir">
+		<put-attribute name="body" value="/WEB-INF/views/importanciaIncluir.jsp" />
+	</definition>
+	
+	<definition extends="default" name="importanciaEditar">
+		<put-attribute name="body" value="/WEB-INF/views/importanciaEditar.jsp" />
+	</definition>
+	<!-- fim de custom menu -->
+	
+	</tiles-definitions>

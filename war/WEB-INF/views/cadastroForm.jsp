@@ -66,7 +66,9 @@
    		<div class="control-group">
     		<label class="control-label">${label_cadastro_importancia}</label>
     		<div class="controls">
-    			<form:input path="importancia" class="input-large"/>
+    			<!--  form:input path="importancia" class="input-large"/>  -->
+    			<form:select path="importancia" items="${importanciaList}" itemValue="nome" itemLabel="nome" >
+    			</form:select>    			
     			<form:errors path="importancia" cssClass="alert alert-error" />
     		</div>
    		</div>
@@ -77,7 +79,7 @@
     			
     			 <form:select path="clienteId" items="${clientesList}" itemValue="id" itemLabel="nome" >  
     			 <!--  -->
-        </form:select>
+        		</form:select>
         
     		</div>
    		</div>
