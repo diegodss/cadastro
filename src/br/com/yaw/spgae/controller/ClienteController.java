@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import br.com.yaw.spgae.config.ValidaUsuario;
 import br.com.yaw.spgae.dao.ClienteDAO;
 import br.com.yaw.spgae.model.Cliente;
 
@@ -36,7 +37,11 @@ public class ClienteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String listar (Model uiModel) {
 		uiModel.addAttribute("clientes", getDataSource().getAll());
-		return "clienteLista";
+		
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("clienteLista");
+		return ret;
+			
 	}
 	
 	@RequestMapping (params = "form", method = RequestMethod.GET)
@@ -44,7 +49,11 @@ public class ClienteController {
 		uiModel.addAttribute("cliente", new Cliente());
 		uiModel.addAttribute("active", "clienteIncluir");
 		log.debug("Pronto para incluir cliente");
-		return "clienteIncluir";
+		
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("clienteIncluir");
+		return ret;
+				
 	}
 	@RequestMapping(method = RequestMethod.POST) 
 	public String criar(@Valid Cliente cliente, BindingResult bindingResult, Model uiModel) {
@@ -65,7 +74,12 @@ public class ClienteController {
 			uiModel.addAttribute("cliente", c);
 			log.debug("Pronto para editar cliente");			
 		}
-		return "clienteEditar";
+		
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("clienteEditar");
+		return ret;
+		
+		
 	}
 	@RequestMapping(method = RequestMethod.PUT) 
 	public String editar (@Valid Cliente cliente, BindingResult bindingResult, Model uiModel) {

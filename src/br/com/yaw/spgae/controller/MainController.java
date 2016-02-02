@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.yaw.spgae.config.ValidaUsuario;
+
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -38,16 +40,11 @@ public class MainController {
 		return "loginInvalido";
 	}
 	@RequestMapping(method = RequestMethod.GET)
-	public String loginInvalido2(Model uiModel) {
+	public String validaAcessoRoot(Model uiModel) {
 		
-		UserService userService = UserServiceFactory.getUserService();
-		User currentUser = userService.getCurrentUser();
-		
-		if (currentUser != null) {
-			return "cadastro";
-		} else {
-			return "loginInvalido";
-		}
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("redirect:/cadastro");
+		return ret;
 		
 	}
 	

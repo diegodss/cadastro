@@ -25,12 +25,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import br.com.yaw.spgae.config.ValidaUsuario;
 import br.com.yaw.spgae.dao.CadastroDAO;
 import br.com.yaw.spgae.model.Cadastro;
 import br.com.yaw.spgae.dao.ClienteDAO;
 import br.com.yaw.spgae.dao.ImportanciaDAO;
 import br.com.yaw.spgae.model.Cliente;
 import br.com.yaw.spgae.model.Importancia;
+
+
+
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 
 @RequestMapping(value="/cadastro")
 @Controller
@@ -48,18 +56,35 @@ public class CadastroController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String listar (Model uiModel) {
+
 		
-		List<Cadastro> cadastro = getDataSource().getAll();
 		
-		 for (Cadastro c : cadastro) {
+		
+		
+		List<Cadastro> cadastro1 = getDataSource().getAll();
+		
+		 for (Cadastro c : cadastro1) {
 			 String imagem = c.getImagem();
 			 if (imagem.equals("")) {
 				c.setImagem("/resources/img/icon-interrogacao.png");
 			 }
 		 }
-		
-		uiModel.addAttribute("cadastros",cadastro );
-		return "cadastroLista";
+		/*		
+		UserService userService = UserServiceFactory.getUserService();
+	    User user = userService.getCurrentUser();
+	    String ret ;
+	    if (user != null) {
+	    	ret = "cadastroLista";
+	    	
+	      }	 else {
+	    	  ret = "loginInvalido";
+	      }   
+	    */
+		 ValidaUsuario vu = new ValidaUsuario();		 		 
+		 String ret = vu.validaAcesso("cadastroLista");
+		 
+	    uiModel.addAttribute("cadastros", cadastro1 );
+		return ret;
 	}
 	
 	@RequestMapping (params = "form", method = RequestMethod.GET)
@@ -78,7 +103,10 @@ public class CadastroController {
 		
 		uiModel.addAttribute("active", "cadastroIncluir");
 		log.debug("Pronto para incluir cadastro");
-		return "cadastroIncluir";
+		
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("cadastroIncluir");
+		return ret;	
 	}
 	@RequestMapping(method = RequestMethod.POST) 
 	public String criar(@Valid Cadastro cadastro, BindingResult bindingResult, Model uiModel) {
@@ -107,7 +135,11 @@ public class CadastroController {
 			uiModel.addAttribute("cadastro", c);
 			log.debug("Pronto para editar cadastro");			
 		}
-		return "cadastroEditar";
+		
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("cadastroEditar");
+		return ret;
+				
 	}
 	@RequestMapping(method = RequestMethod.PUT) 
 	public String editar (@Valid Cadastro cadastro, BindingResult bindingResult, Model uiModel) {

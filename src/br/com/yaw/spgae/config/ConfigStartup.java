@@ -6,6 +6,10 @@ import javax.servlet.ServletContextListener;
 import br.com.yaw.spgae.model.Cadastro;
 import br.com.yaw.spgae.model.Cliente;
 import br.com.yaw.spgae.model.Importancia;
+
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.ObjectifyService;
 
 /**
@@ -22,9 +26,11 @@ public class ConfigStartup implements ServletContextListener {
 		ObjectifyService.register(Cadastro.class);
 		ObjectifyService.register(Cliente.class);
 		ObjectifyService.register(Importancia.class);
+		
 	}
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {}
+	/* */
 	
 }

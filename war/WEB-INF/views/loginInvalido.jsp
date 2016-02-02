@@ -12,7 +12,7 @@
 	<div class="row-fluid" style="padding-top: 10px; padding-bottom: 10px">
 		<div class="span1"></div>
 		
-		<div class="span10">
+		<div class="span12">
 			Voce nao tem permissao para acessar esta pagina
 		</div>
 	</div>

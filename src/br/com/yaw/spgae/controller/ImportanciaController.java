@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import br.com.yaw.spgae.config.ValidaUsuario;
 import br.com.yaw.spgae.dao.ImportanciaDAO;
 import br.com.yaw.spgae.model.Importancia;
 
@@ -36,7 +37,11 @@ public class ImportanciaController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String listar (Model uiModel) {
 		uiModel.addAttribute("importancias", getDataSource().getAll());
-		return "importanciaLista";
+
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("importanciaLista");
+		return ret;
+				
 	}
 	
 	@RequestMapping (params = "form", method = RequestMethod.GET)
@@ -44,7 +49,11 @@ public class ImportanciaController {
 		uiModel.addAttribute("importancia", new Importancia());
 		uiModel.addAttribute("active", "importanciaIncluir");
 		log.debug("Pronto para incluir importancia");
-		return "importanciaIncluir";
+
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("importanciaIncluir");
+		return ret;
+			
 	}
 	@RequestMapping(method = RequestMethod.POST) 
 	public String criar(@Valid Importancia importancia, BindingResult bindingResult, Model uiModel) {
@@ -65,7 +74,10 @@ public class ImportanciaController {
 			uiModel.addAttribute("importancia", c);
 			log.debug("Pronto para editar importancia");			
 		}
-		return "importanciaEditar";
+		
+		ValidaUsuario vu = new ValidaUsuario();		 		 
+		String ret = vu.validaAcesso("importanciaEditar");
+		return ret;
 	}
 	@RequestMapping(method = RequestMethod.PUT) 
 	public String editar (@Valid Importancia importancia, BindingResult bindingResult, Model uiModel) {
